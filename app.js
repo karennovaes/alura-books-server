@@ -1,16 +1,21 @@
+// ------ IMPORTAÇÕES ------
+const rotaLivro = require('./rotas/livro');
+const express = require('express'); //cria o servidor
+
 
 // ----- DADOS DO SERVIDOR ----- 
 
-const express = require('express'); //cria o servidor
 const app = express(); //cria a aplicação
 const port = 8000; // Porta que o servidor vai rodar
 
 
 // ----- ROTAS -----
 // Rota principal
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.send('Olá Mundo da Alura do Brasil!');
-});
+});*/
+
+app.use('/livros', rotaLivro);
 
 // ----- INICIANDO O SERVIDOR -----
 
