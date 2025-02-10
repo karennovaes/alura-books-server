@@ -29,9 +29,16 @@ function modificaLivro(modificacoes){
     fs.writeFileSync('livros.json', JSON.stringify(livrosAtuais)) // Escreve a nova lista de livros no arquivo livros.json
 }
 
+function deletaLivro(id){
+    const livros = JSON.parse(fs.readFileSync('livros.json')) // Lê o arquivo livros.json
+    const novaListaDeLivros = livros.filter( livro => livro.id !== id ) // Filtra a lista de livros para excluir o livro com o id recebido
+    fs.writeFileSync('livros.json', JSON.stringify(novaListaDeLivros)) // Escreve a nova lista de livros no arquivo livros.json
+}
+
 module.exports = {
     getTodosLivros, 
     getLivroPorId,
     insereLivro,
-    modificaLivro
+    modificaLivro,
+    deletaLivro
 }
