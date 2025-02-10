@@ -36,9 +36,14 @@ function getLivro(req, res) {
 function postLivro(req, res) {
   try {
     const livroNovo = req.body; // Pega o livro do corpo da requisição
-    insereLivro(livroNovo); // Insere o livro
-    res.status(201); // Define o status da resposta como "Criado"
-    res.send("Livro adicionado com sucesso!"); // Envia a resposta
+    if(req.body.nome) {
+        insereLivro(livroNovo); // Insere o livro
+        res.status(201); // Define o status da resposta como "Criado"
+        res.send("Livro adicionado com sucesso!"); // Envia a resposta
+    } else {
+        res.status(422);
+        res.send("O livro não possui um nome");
+    }
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
