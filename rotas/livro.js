@@ -1,9 +1,11 @@
 const {Router} = require('express');
-const { getLivros, createLivro, updateLivro, deleteLivro } = require('../controladores/livro');
+const { getLivros, getLivro} = require('../controladores/livro');
 
 const router = Router();
 
 router.get('/', getLivros); 
+
+router.get('/:id', getLivro); // Rota para buscar um livro pelo id
 
 
 router.post('/', (req, res) => {
