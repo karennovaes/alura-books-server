@@ -1,5 +1,6 @@
 // ------ IMPORTAÇÕES ------
-const rotaLivro = require('./rotas/livro');
+const rotaLivro = require('./rotas/livro'); // Importa a rota de livros
+const rotaFavorito = require("./rotas/favorito"); // Importa a rota de favoritos
 const express = require('express'); //cria o servidor
 const cors = require('cors'); // Permite requisições de outros domínios
 
@@ -19,6 +20,7 @@ const port = 8000; // Porta que o servidor vai rodar
 });*/
 
 app.use('/livros', rotaLivro);
+app.use('/favoritos', rotaFavorito)
 
 // ----- INICIANDO O SERVIDOR -----
 
